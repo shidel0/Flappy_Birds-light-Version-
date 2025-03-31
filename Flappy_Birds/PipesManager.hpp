@@ -1,22 +1,37 @@
-#pragma once
+#pragma once  // Защита от множественного включения заголовочного файла
+
 #include <vector>
 #include <random>
 #include <SFML/Graphics.hpp>
-#include "Pipes.hpp"
+#include "Pipes.hpp"  // Включаем заголовок класса Pipes для использования
 
 class PipesManager
 {
-	unsigned short generator_timer;
+private:
+    // Таймер для генерации новых труб (в кадрах)
+    unsigned short generator_timer;
 
-	std::uniform_int_distribution<unsigned short> y_distribution;
+    // Распределение для случайной Y-координаты генерации труб
+    std::uniform_int_distribution<unsigned short> y_distribution;
 
-	std::vector<Pipes> pipes;
+    // Контейнер для хранения всех активных труб
+    std::vector<Pipes> pipes;
+
 public:
-	PipesManager();
+    // Конструктор - инициализирует распределение и таймер
+    PipesManager();
 
-	void draw(sf::RenderWindow& i_window);
-	void reset();
-	void update(std::mt19937_64& i_random_engine);
+    // Отрисовывает все трубы в указанном окне
+    void draw(sf::RenderWindow& i_window);
 
-	std::vector<Pipes> get_pipes();
+    // Сбрасывает состояние менеджера (очищает трубы и сбрасывает таймер)
+    void reset();
+
+    // Обновляет состояние всех труб и генерирует новые
+    // Принимает генератор случайных чисел для определения позиции новых труб
+    void update(std::mt19937_64& i_random_engine);
+
+    // Возвращает копию вектора всех текущих труб
+    // (используется для проверки столкновений в классе Bird)
+    std::vector<Pipes> get_pipes();
 };

@@ -1,26 +1,39 @@
-#pragma once
+#pragma once  // Защита от повторного включения заголовочного файла
 
 class Pipes
 {
-	//Are the pipes going up or down?
-	bool direction;
+    // Направление движения труб (вверх или вниз)
+    bool direction;
 
-	short x;
+    // Позиция трубы по горизонтали (x-координата)
+    short x;
 
-	//I didn't wanna use float numbers, so I decided to move the pipes after a certain number of frames.
-	unsigned char y_movement_timer;
+    // Таймер для управления вертикальным движением труб
+    // (движение происходит через определенные промежутки времени)
+    unsigned char y_movement_timer;
 
-	unsigned short y;
+    // Позиция трубы по вертикали (y-координата)
+    unsigned short y;
+
 public:
-	Pipes(short i_x, unsigned short i_y);
+    // Конструктор: принимает начальные координаты трубы (i_x, i_y)
+    Pipes(short i_x, unsigned short i_y);
 
-	bool get_direction();
-	bool is_gone();
+    // Получить текущее направление движения трубы (вверх/вниз)
+    bool get_direction();
 
-	short get_x();
+    // Проверить, вышла ли труба за пределы экрана
+    bool is_gone();
 
-	unsigned short get_y();
+    // Получить текущую x-координату трубы
+    short get_x();
 
-	void draw(sf::RenderWindow& i_window);
-	void update();
+    // Получить текущую y-координату трубы
+    unsigned short get_y();
+
+    // Отрисовать трубу в указанном окне
+    void draw(sf::RenderWindow& i_window);
+
+    // Обновить состояние трубы (движение и изменение направления)
+    void update();
 };

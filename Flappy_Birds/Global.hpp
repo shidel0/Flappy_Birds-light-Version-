@@ -1,32 +1,29 @@
 #pragma once
 
-constexpr float FLAP_SPEED = -4.0f;
-constexpr float GRAVITY = 0.25f;
+// Физика птицы
+constexpr float FLAP_SPEED = -4.0f; // Скорость взмаха крыльев (отрицательное значение означает движение вверх)
+constexpr float GRAVITY = 0.25f;     // Сила гравитации, воздействующая на птицу
 
-constexpr unsigned char BIRD_SIZE = 16;
-constexpr unsigned char BIRD_SPEED = 1;
-constexpr unsigned char BIRD_START_X = 37;
-constexpr unsigned char FONT_HEIGHT = 32;
-constexpr unsigned char GAP_SIZE = 64;
-//Minimum indent from the ground and from the top to the gap.
-constexpr unsigned char PIPE_INDENT = 32;
-//Vertical speed of the pipes.
-constexpr unsigned char PIPE_SPEED = 1;
-constexpr unsigned char SCREEN_RESIZE = 2;
-//We'll generate new pipes after this number of frames.
-constexpr unsigned short GENERATOR_TIMER_DURATION = 128;
-constexpr unsigned short GROUND_Y = 288;
-constexpr unsigned short SCREEN_HEIGHT = 320;
-constexpr unsigned short SCREEN_WIDTH = 180;
+// Параметры птицы
+constexpr unsigned char BIRD_SIZE = 16;      // Размер птицы (вероятно, в пикселях)
+constexpr unsigned char BIRD_SPEED = 1;     // Базовая горизонтальная скорость птицы
+constexpr unsigned char BIRD_START_X = 37;   // Начальная позиция птицы по оси X
 
-//-------------------< AI CONSTANTS >-------------------
-//(I'm getting too good at writing comments.)
+// Графика и интерфейс
+constexpr unsigned char FONT_HEIGHT = 32;    // Высота шрифта для текста
+constexpr unsigned char SCREEN_RESIZE = 3;   // Коэффициент масштабирования экрана
 
-//This means a probability of 1 in 64.
-constexpr unsigned char MUTATION_PROBABILITY = 64;
-constexpr unsigned char POPULATION_SIZE = 8;
-constexpr unsigned char TOTAL_HIDDEN_NODES = 4;
-constexpr unsigned char TOTAL_INPUT_NODES = 3;
-constexpr unsigned char TOTAL_OUTPUT_NODES = 1;
+// Параметры труб
+constexpr unsigned char GAP_SIZE = 64;       // Размер промежутка между верхней и нижней трубой
+constexpr unsigned char PIPE_INDENT = 32;    // Минимальный отступ труб от земли и потолка
+constexpr unsigned char PIPE_SPEED = 1;      // Скорость движения труб (горизонтальная)
+constexpr unsigned short GENERATOR_TIMER_DURATION = 128; // Частота генерации новых труб (в кадрах)
 
+// Параметры экрана и окружения
+constexpr unsigned short GROUND_Y = 288;     // Y-координата земли
+constexpr unsigned short SCREEN_HEIGHT = 320; // Высота экрана
+constexpr unsigned short SCREEN_WIDTH = 180;  // Ширина экрана
+
+// Параметры ИИ (если используется)
+constexpr unsigned char POPULATION_SIZE = 8; // Размер популяции если я захочу добавить онлайн режим
 constexpr std::chrono::microseconds FRAME_DURATION(16667);
